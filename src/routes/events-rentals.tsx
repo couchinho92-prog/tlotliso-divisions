@@ -12,7 +12,7 @@ export const Route = createFileRoute("/events-rentals")({
   component: EventRentals,
 });
 
-const LOGO_URL = "/public/logo/tlotliso-logo.png";
+const LOGO_URL = "logo/tlotliso-logo.png";
 
 const services = [
   {
@@ -127,10 +127,10 @@ export function EventRentals() {
             Equipment Gallery
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <img src="/public/events_rentals/IMG-20260608-WA0020.jpg" alt="Events equipment" className="rounded-xl w-full h-48 object-cover shadow-lg" />
-            <img src="/public/events_rentals/IMG-20260608-WA0022.jpg" alt="Events equipment" className="rounded-xl w-full h-48 object-cover shadow-lg" />
-            <img src="/public/events_rentals/IMG-20260608-WA0023.jpg" alt="Events equipment" className="rounded-xl w-full h-48 object-cover shadow-lg" />
-            <img src="/public/events_rentals/IMG-20260608-WA0025.jpg" alt="Events equipment" className="rounded-xl w-full h-48 object-cover shadow-lg" />
+            <img src="events_rentals/IMG-20260608-WA0020.jpg" alt="Events equipment" className="rounded-xl w-full h-48 object-cover shadow-lg" />
+            <img src="events_rentals/IMG-20260608-WA0022.jpg" alt="Events equipment" className="rounded-xl w-full h-48 object-cover shadow-lg" />
+            <img src="events_rentals/IMG-20260608-WA0023.jpg" alt="Events equipment" className="rounded-xl w-full h-48 object-cover shadow-lg" />
+            <img src="events_rentals/IMG-20260608-WA0025.jpg" alt="Events equipment" className="rounded-xl w-full h-48 object-cover shadow-lg" />
           </div>
         </div>
       </section>

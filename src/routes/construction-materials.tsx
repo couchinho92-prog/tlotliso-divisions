@@ -12,7 +12,7 @@ export const Route = createFileRoute("/construction-materials")({
   component: ConstructionMaterials,
 });
 
-const LOGO_URL = "/public/logo/tlotliso-logo.png";
+const LOGO_URL = "logo/tlotliso-logo.png";
 
 const services = [
   {
