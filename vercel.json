@@ -1,0 +1,11 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/client",
+  "devCommand": "npm run dev",
+  "routes": [
+    { "src": "/assets/(.*)", "dest": "/dist/client/assets/$1" },
+    { "src": "/public/(.*)", "dest": "/public/$1" },
+    { "src": "/__l5e/(.*)", "dest": "/dist/client/__l5e/$1" },
+    { "src": "/(.*)", "dest": "/api" }
+  ]
+}

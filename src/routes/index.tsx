@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import logoAsset from "@/assets/tlotliso-logo.png.asset.json";
 import { motion } from "framer-motion";
+
+const LOGO_URL = "/public/logo/tlotliso-logo.png";
 import { useEffect, useState } from "react";
 import {
   HardHat,
@@ -25,7 +26,7 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Tlotliso Divisions: event rentals, construction materials, logistics and shuttle services in Mt Fletcher, Eastern Cape." },
       { property: "og:title", content: "Tlotliso Divisions — One Stop Rentals" },
       { property: "og:description", content: "Event rentals, construction materials, logistics and shuttle services in Mt Fletcher, Eastern Cape." },
-      { property: "og:image", content: logoAsset.url },
+      { property: "og:image", content: LOGO_URL },
     ],
   }),
   component: Index,
@@ -40,24 +41,32 @@ const divisions = [
     title: "Construction Materials",
     desc: "Bricks, sand, stone and core supply for builders across the Eastern Cape.",
     points: ["Bricks & blocks", "Sand & aggregates", "Bulk delivery"],
+    image: "/public/construction_materials/IMG-20260608-WA0019.jpg",
+    link: "/construction-materials",
   },
   {
     icon: PartyPopper,
     title: "Event Rentals",
     desc: "Tents, tables, chairs, décor and inflatables to make any occasion shine.",
     points: ["Tents & marquees", "Tables & chairs", "Inflatables"],
+    image: "/public/events_rentals/IMG-20260608-WA0020.jpg",
+    link: "/events-rentals",
   },
   {
     icon: Truck,
     title: "Logistics Solutions",
     desc: "Reliable freight and last-mile transport built around your timelines.",
     points: ["Local & long-haul", "Tracked deliveries", "On-time guarantee"],
+    image: "/public/logistics_solutions/IMG-20260608-WA0021.jpg",
+    link: "/logistics",
   },
   {
     icon: Bus,
     title: "Shuttle Services",
     desc: "Safe, professional passenger shuttles for groups, staff and events.",
     points: ["Group transfers", "Daily commuter", "Event shuttles"],
+    image: "/public/events_rentals/IMG-20260608-WA0024.jpg",
+    link: "/shuttle",
   },
 ];
 
@@ -140,7 +149,7 @@ function Index() {
           {/* Center: logo */}
           <a href="#top" className="flex items-center justify-self-center">
             <img
-              src={logoAsset.url}
+              src={LOGO_URL}
               alt="Tlotliso"
               className="h-16 w-auto sm:h-20 md:h-24 transition-transform hover:scale-105"
             />
@@ -243,7 +252,7 @@ function Index() {
           initial={{ opacity: 0, scale: 0.92, y: 12 }}
           animate={{ opacity: 0.85, scale: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          src={logoAsset.url}
+          src={LOGO_URL}
           alt="Tlotliso Divisions — One Stop Rentals"
           className="w-full max-w-xs sm:max-w-md lg:max-w-xl mx-auto mix-blend-multiply opacity-90"
           style={{
@@ -341,16 +350,27 @@ function Index() {
             {divisions.map((d, i) => {
               const Icon = d.icon;
               return (
-                <motion.article
+                <motion.a
                   key={d.title}
+                  href={d.link}
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="group relative overflow-hidden rounded-2xl border border-[#0A1F5C]/10 bg-white p-6 shadow-sm transition hover:-translate-y-2 hover:border-[#CC2228]/30 hover:shadow-2xl hover:shadow-[#0A1F5C]/10"
+                  className="group relative block overflow-hidden rounded-2xl border border-[#0A1F5C]/10 bg-white shadow-sm transition hover:-translate-y-2 hover:border-[#CC2228]/30 hover:shadow-2xl hover:shadow-[#0A1F5C]/10"
                 >
+                  {d.image && (
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={d.image}
+                        alt={d.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F5C]/60 to-transparent" />
+                    </div>
+                  )}
                   <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br from-[#CC2228]/0 to-[#CC2228]/0 transition-all duration-500 group-hover:from-[#CC2228]/10 group-hover:to-[#0A1F5C]/10" />
-                  <div className="relative">
+                  <div className="relative p-6">
                     <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#0A1F5C] text-white transition-all duration-500 group-hover:bg-[#CC2228] group-hover:rotate-6">
                       <Icon className="h-6 w-6" />
                     </div>
@@ -366,8 +386,11 @@ function Index() {
                         </li>
                       ))}
                     </ul>
+                    <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#CC2228]">
+                      View Details →
+                    </div>
                   </div>
-                </motion.article>
+                </motion.a>
               );
             })}
           </div>
@@ -427,7 +450,7 @@ function Index() {
                 </p>
                 <div className="mt-6 flex items-center gap-3 border-t border-white/15 pt-5">
                   <img
-                    src={logoAsset.url}
+                    src={LOGO_URL}
                     alt=""
                     className="h-10 w-10 rounded-full bg-white p-1"
                   />
@@ -610,7 +633,7 @@ function Index() {
       <footer className="border-t border-[#0A1F5C]/10 bg-white px-4 sm:px-6 py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="Tlotliso" className="h-9 w-auto" />
+            <img src={LOGO_URL} alt="Tlotliso" className="h-9 w-auto" />
             <span className="text-xs text-[#0A1F5C]/60">
               © {new Date().getFullYear()} Tlotliso Divisions. All rights reserved.
             </span>
