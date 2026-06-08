@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 
-const LOGO_URL = "/public/logo/tlotliso-logo.png";
+const LOGO_URL = "logo/tlotliso-logo.png";
 import { useEffect, useState } from "react";
 import {
   HardHat,
@@ -41,7 +41,7 @@ const divisions = [
     title: "Construction Materials",
     desc: "Bricks, sand, stone and core supply for builders across the Eastern Cape.",
     points: ["Bricks & blocks", "Sand & aggregates", "Bulk delivery"],
-    image: "/public/construction_materials/IMG-20260608-WA0019.jpg",
+    image: "construction_materials/IMG-20260608-WA0019.jpg",
     link: "/construction-materials",
   },
   {
@@ -49,7 +49,7 @@ const divisions = [
     title: "Event Rentals",
     desc: "Tents, tables, chairs, décor and inflatables to make any occasion shine.",
     points: ["Tents & marquees", "Tables & chairs", "Inflatables"],
-    image: "/public/events_rentals/IMG-20260608-WA0020.jpg",
+    image: "events_rentals/IMG-20260608-WA0020.jpg",
     link: "/events-rentals",
   },
   {
@@ -57,7 +57,7 @@ const divisions = [
     title: "Logistics Solutions",
     desc: "Reliable freight and last-mile transport built around your timelines.",
     points: ["Local & long-haul", "Tracked deliveries", "On-time guarantee"],
-    image: "/public/logistics_solutions/IMG-20260608-WA0021.jpg",
+    image: "logistics_solutions/IMG-20260608-WA0021.jpg",
     link: "/logistics",
   },
   {
@@ -65,7 +65,7 @@ const divisions = [
     title: "Shuttle Services",
     desc: "Safe, professional passenger shuttles for groups, staff and events.",
     points: ["Group transfers", "Daily commuter", "Event shuttles"],
-    image: "/public/events_rentals/IMG-20260608-WA0024.jpg",
+    image: "events_rentals/IMG-20260608-WA0024.jpg",
     link: "/shuttle",
   },
 ];

@@ -1,11 +1,16 @@
 {
+  "framework": "tanstack-start",
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
   "devCommand": "npm run dev",
   "routes": [
-    { "src": "/assets/(.*)", "dest": "/dist/client/assets/$1" },
-    { "src": "/public/(.*)", "dest": "/public/$1" },
-    { "src": "/__l5e/(.*)", "dest": "/dist/client/__l5e/$1" },
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/logo/(.*)", "dest": "/logo/$1" },
+    { "src": "/construction_materials/(.*)", "dest": "/construction_materials/$1" },
+    { "src": "/events_rentals/(.*)", "dest": "/events_rentals/$1" },
+    { "src": "/logistics_solutions/(.*)", "dest": "/logistics_solutions/$1" },
+    { "src": "/shuttle/(.*)", "dest": "/shuttle/$1" },
+    { "src": "/__l5e/(.*)", "dest": "/__l5e/$1" },
     { "src": "/(.*)", "dest": "/api" }
   ]
 }

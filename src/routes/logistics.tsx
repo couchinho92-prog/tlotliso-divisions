@@ -12,7 +12,7 @@ export const Route = createFileRoute("/logistics")({
   component: Logistics,
 });
 
-const LOGO_URL = "/public/logo/tlotliso-logo.png";
+const LOGO_URL = "logo/tlotliso-logo.png";
 
 const services = [
   {
@@ -81,7 +81,7 @@ export function Logistics() {
       <section className="px-4 sm:px-6 py-8">
         <div className="mx-auto max-w-4xl">
           <img 
-            src="/public/logistics_solutions/IMG-20260608-WA0021.jpg" 
+            src="logistics_solutions/IMG-20260608-WA0021.jpg" 
             alt="Logistics truck" 
             className="w-full rounded-2xl shadow-xl" 
           />
