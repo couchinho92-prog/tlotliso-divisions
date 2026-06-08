@@ -5,10 +5,22 @@
   "env": {
     "NODE_ENV": "production"
   },
-  "rewrites": [
+  "routes": [
     {
-      "source": "/((?!_next/static|_next/image|favicon.ico|logo|public|.*\\..*|api).*)",
-      "destination": "/index.html"
+      "src": "^/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "^/(_next|favicon\\.ico|logo|public)(.*)",
+      "status": 404
+    },
+    {
+      "src": "^/((?!\\.json$|.*\\.\\w+$).*)$",
+      "dest": "/api"
+    },
+    {
+      "src": "(.*)",
+      "dest": "/api/$1"
     }
   ]
 }
