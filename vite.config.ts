@@ -14,8 +14,11 @@ export default defineConfig({
     preset: "vercel",
     output: {
       dir: "dist",
-      serverDir: "dist/__server",
-      publicDir: "dist/client",
+      serverDir: "dist/api",
+      publicDir: "dist/public",
+    },
+    routeRules: {
+      "/**": { cache: false },
     },
   },
 });
