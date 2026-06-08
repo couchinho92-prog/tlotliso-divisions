@@ -241,11 +241,17 @@ function Index() {
 
         <motion.img
           initial={{ opacity: 0, scale: 0.92, y: 12 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          animate={{ opacity: 0.85, scale: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           src={logoAsset.url}
           alt="Tlotliso Divisions — One Stop Rentals"
-          className="w-full max-w-xs sm:max-w-md lg:max-w-xl mx-auto drop-shadow-[0_20px_40px_rgba(10,31,92,0.18)]"
+          className="w-full max-w-xs sm:max-w-md lg:max-w-xl mx-auto mix-blend-multiply opacity-90"
+          style={{
+            maskImage:
+              "radial-gradient(ellipse at center, #000 55%, transparent 95%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse at center, #000 55%, transparent 95%)",
+          }}
         />
 
         <motion.div
