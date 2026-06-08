@@ -4,30 +4,5 @@
   "installCommand": "npm install",
   "env": {
     "NODE_ENV": "production"
-  },
-  "routes": [
-    {
-      "src": "^/assets/(.*)$",
-      "dest": "/dist/client/assets/$1",
-      "check": true
-    },
-    {
-      "src": "^/logo/(.*)$",
-      "dest": "/dist/client/logo/$1",
-      "check": true
-    },
-    {
-      "src": "^/public/(.*)$",
-      "dest": "/dist/client/public/$1",
-      "check": true
-    },
-    {
-      "src": "^/((?!.*\\.[a-zA-Z0-9]+$).*)$",
-      "dest": "/api/index.js"
-    },
-    {
-      "src": "(.*)",
-      "dest": "/dist/client/$1"
-    }
-  ]
+  }
 }
