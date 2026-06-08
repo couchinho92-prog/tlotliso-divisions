@@ -4,5 +4,11 @@
   "installCommand": "npm install",
   "env": {
     "NODE_ENV": "production"
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/((?!_next/static|_next/image|favicon.ico|logo|public|.*\\..*|api).*)",
+      "destination": "/index.html"
+    }
+  ]
 }
