@@ -7,20 +7,27 @@
   },
   "routes": [
     {
-      "src": "^/api/(.*)",
-      "dest": "/api/$1"
+      "src": "^/assets/(.*)$",
+      "dest": "/dist/client/assets/$1",
+      "check": true
     },
     {
-      "src": "^/(_next|favicon\\.ico|logo|public)(.*)",
-      "status": 404
+      "src": "^/logo/(.*)$",
+      "dest": "/dist/client/logo/$1",
+      "check": true
     },
     {
-      "src": "^/((?!\\.json$|.*\\.\\w+$).*)$",
-      "dest": "/api"
+      "src": "^/public/(.*)$",
+      "dest": "/dist/client/public/$1",
+      "check": true
+    },
+    {
+      "src": "^/((?!.*\\.[a-zA-Z0-9]+$).*)$",
+      "dest": "/api/index.js"
     },
     {
       "src": "(.*)",
-      "dest": "/api/$1"
+      "dest": "/dist/client/$1"
     }
   ]
 }
