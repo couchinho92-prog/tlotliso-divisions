@@ -113,12 +113,10 @@ function Index() {
             : "bg-transparent"
         }`}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3">
-          <a href="#top" className="flex items-center gap-2">
-            <img src={logoAsset.url} alt="Tlotliso" className="h-10 w-auto sm:h-12" />
-          </a>
-          <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
-            {navLinks.map((l) => (
+        <nav className="relative mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 py-3">
+          {/* Left: desktop nav links */}
+          <ul className="hidden md:flex items-center gap-8 text-sm font-medium justify-self-start">
+            {navLinks.slice(0, 2).map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
@@ -129,19 +127,49 @@ function Index() {
               </li>
             ))}
           </ul>
-          <a
-            href="#contact"
-            className="hidden md:inline-flex items-center gap-2 rounded-full bg-[#CC2228] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#CC2228]/20 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#CC2228]/30"
-          >
-            Get a quote <ArrowRight className="h-4 w-4" />
-          </a>
+
+          {/* Mobile menu button (left) */}
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg text-[#0A1F5C] hover:bg-[#0A1F5C]/5"
+            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg text-[#0A1F5C] hover:bg-[#0A1F5C]/5 justify-self-start"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
+
+          {/* Center: logo */}
+          <a href="#top" className="flex items-center justify-self-center">
+            <img
+              src={logoAsset.url}
+              alt="Tlotliso"
+              className="h-16 w-auto sm:h-20 md:h-24 transition-transform hover:scale-105"
+            />
+          </a>
+
+          {/* Right: desktop nav links + CTA */}
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium justify-self-end">
+            <ul className="flex items-center gap-8">
+              {navLinks.slice(2).map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    className="relative text-[#0A1F5C]/80 transition hover:text-[#0A1F5C] after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-[#CC2228] after:transition-all hover:after:w-full"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full bg-[#CC2228] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#CC2228]/20 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#CC2228]/30"
+            >
+              Get a quote <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+
+          {/* Mobile right spacer to keep logo centered */}
+          <div className="md:hidden h-10 w-10 justify-self-end" aria-hidden />
         </nav>
         {menuOpen && (
           <motion.div
@@ -213,11 +241,17 @@ function Index() {
 
         <motion.img
           initial={{ opacity: 0, scale: 0.92, y: 12 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          animate={{ opacity: 0.85, scale: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           src={logoAsset.url}
           alt="Tlotliso Divisions — One Stop Rentals"
-          className="w-full max-w-xs sm:max-w-md lg:max-w-xl mx-auto drop-shadow-[0_20px_40px_rgba(10,31,92,0.18)]"
+          className="w-full max-w-xs sm:max-w-md lg:max-w-xl mx-auto mix-blend-multiply opacity-90"
+          style={{
+            maskImage:
+              "radial-gradient(ellipse at center, #000 55%, transparent 95%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse at center, #000 55%, transparent 95%)",
+          }}
         />
 
         <motion.div
