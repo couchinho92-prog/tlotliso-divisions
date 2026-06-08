@@ -4,19 +4,5 @@
   "installCommand": "npm install",
   "env": {
     "NODE_ENV": "production"
-  },
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/dist/public/assets/$1"
-    },
-    {
-      "src": "/logo/(.*)",
-      "dest": "/dist/public/logo/$1"
-    },
-    {
-      "src": "^/(?!_next|api).*$",
-      "dest": "/api/index.js"
-    }
-  ]
+  }
 }
