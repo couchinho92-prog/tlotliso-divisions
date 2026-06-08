@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ShuttleRouteImport } from './routes/shuttle'
+import { Route as LogisticsRouteImport } from './routes/logistics'
+import { Route as EventsRentalsRouteImport } from './routes/events-rentals'
+import { Route as ConstructionMaterialsRouteImport } from './routes/construction-materials'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ShuttleRoute = ShuttleRouteImport.update({
+  id: '/shuttle',
+  path: '/shuttle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LogisticsRoute = LogisticsRouteImport.update({
+  id: '/logistics',
+  path: '/logistics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRentalsRoute = EventsRentalsRouteImport.update({
+  id: '/events-rentals',
+  path: '/events-rentals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConstructionMaterialsRoute = ConstructionMaterialsRouteImport.update({
+  id: '/construction-materials',
+  path: '/construction-materials',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,88 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/construction-materials': typeof ConstructionMaterialsRoute
+  '/events-rentals': typeof EventsRentalsRoute
+  '/logistics': typeof LogisticsRoute
+  '/shuttle': typeof ShuttleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/construction-materials': typeof ConstructionMaterialsRoute
+  '/events-rentals': typeof EventsRentalsRoute
+  '/logistics': typeof LogisticsRoute
+  '/shuttle': typeof ShuttleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/construction-materials': typeof ConstructionMaterialsRoute
+  '/events-rentals': typeof EventsRentalsRoute
+  '/logistics': typeof LogisticsRoute
+  '/shuttle': typeof ShuttleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/construction-materials'
+    | '/events-rentals'
+    | '/logistics'
+    | '/shuttle'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/construction-materials'
+    | '/events-rentals'
+    | '/logistics'
+    | '/shuttle'
+  id:
+    | '__root__'
+    | '/'
+    | '/construction-materials'
+    | '/events-rentals'
+    | '/logistics'
+    | '/shuttle'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConstructionMaterialsRoute: typeof ConstructionMaterialsRoute
+  EventsRentalsRoute: typeof EventsRentalsRoute
+  LogisticsRoute: typeof LogisticsRoute
+  ShuttleRoute: typeof ShuttleRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/shuttle': {
+      id: '/shuttle'
+      path: '/shuttle'
+      fullPath: '/shuttle'
+      preLoaderRoute: typeof ShuttleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/logistics': {
+      id: '/logistics'
+      path: '/logistics'
+      fullPath: '/logistics'
+      preLoaderRoute: typeof LogisticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events-rentals': {
+      id: '/events-rentals'
+      path: '/events-rentals'
+      fullPath: '/events-rentals'
+      preLoaderRoute: typeof EventsRentalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/construction-materials': {
+      id: '/construction-materials'
+      path: '/construction-materials'
+      fullPath: '/construction-materials'
+      preLoaderRoute: typeof ConstructionMaterialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +137,21 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConstructionMaterialsRoute: ConstructionMaterialsRoute,
+  EventsRentalsRoute: EventsRentalsRoute,
+  LogisticsRoute: LogisticsRoute,
+  ShuttleRoute: ShuttleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
