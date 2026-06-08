@@ -1,8 +1,9 @@
 {
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install",
-  "env": {
-    "NODE_ENV": "production"
+  "framework": "tanstack-start",
+  "outputDirectory": "dist/public",
+  "functions": {
+    "dist/api/index.mjs": {
+      "runtime": "nodejs24.x"
+    }
   }
 }
