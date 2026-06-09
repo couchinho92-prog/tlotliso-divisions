@@ -1,4 +1,8 @@
 {
   "framework": "tanstack-start",
-  "outputDirectory": "dist/public"
+  "outputDirectory": "dist/public",
+  "rewrites": [
+    { "source": "/assets/(.*)", "destination": "/assets/$1" },
+    { "source": "/(.*)", "destination": "/api/index.mjs" }
+  ]
 }
